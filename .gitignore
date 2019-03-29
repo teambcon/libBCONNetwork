@@ -45,3 +45,6 @@ CMakeLists.txt.user*
 # Output directory
 lib/
 
+# macOS
+.DS_Store
+
