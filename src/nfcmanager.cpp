@@ -68,7 +68,11 @@ bool NFCManager::nfcManagerInit()
 
 bool NFCManager::getReaderName()
 {
-    unsigned int uiLength;
+#ifdef __APPLE__
+    unsigned int uiLength = 0;
+#else
+    unsigned long uiLength = 0; // Improper variable name prefix!
+#endif
     bool bReturn = false;
 
     /* If necessary, free previously-allocated memory. */
@@ -287,11 +291,19 @@ void NFCWorker::terminate()
 
 bool NFCWorker::readId()
 {
+#ifdef __APPLE__
     unsigned int uiActiveProtocol = 0;
+#else
+    unsigned long uiActiveProtocol = 0; // Improper variable name prefix!
+#endif
     SCARDHANDLE hCard;
     unsigned char Command[] = { 0xff, 0xCA, 0x00, 0x00, 0x00 };
     unsigned char RxBuffer[ 32 ];
+#ifdef __APPLE__
     unsigned int uiRxLength = 32;
+#else
+    unsigned long uiRxLength = 32; // Improper variable name prefix!
+#endif
     SCARD_IO_REQUEST ioRequest;
     unsigned long ulRawId = 0;
     bool bReturn = false;
