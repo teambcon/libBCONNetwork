@@ -37,15 +37,6 @@ QString NFCManager::getCurrentId()
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
 
-void NFCManager::readCard()
-{
-    if ( nullptr != pWorkerThread )
-    {
-//        pWorkerThread->setNextOperation( NFCWorker::eOperation_Read );
-    }
-}
-/*--------------------------------------------------------------------------------------------------------------------*/
-
 bool NFCManager::nfcManagerInit()
 {
     bool bReturn = false;

@@ -52,9 +52,6 @@ signals:
     void cardRemoved();
     void cardRead( const QString & sId );
 
-public slots:
-    void readCard();
-
 private slots:
     void on_cardInserted();
     void on_cardRemoved();
