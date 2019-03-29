@@ -4,12 +4,8 @@
 #include <QObject>
 #include <QThread>
 #include <QTimer>
-#ifdef __APPLE__
 #include <PCSC/winscard.h>
 #include <PCSC/wintypes.h>
-#else
-#include <winscard.h>
-#endif
 
 #define POLLING_INTERVAL_MS  1000
 #define EVENT_TIMEOUT_MS     1000
