@@ -7,7 +7,7 @@
 QT -= gui
 QT += network
 
-TARGET = libBCONNetwork
+TARGET = BCONNetwork
 TEMPLATE = lib
 CONFIG += staticlib
 
