@@ -34,6 +34,9 @@ HEADERS += \
 
 mac: LIBS += -framework PCSC
 
+unix:!macx: CONFIG += link_pkgconfig
+unix:!macx: PKGCONFIG += libpcsclite
+
 macx {
     target.path = "$$_PRO_FILE_PWD_/lib/macOS/"
     headers.path = "$$_PRO_FILE_PWD_/lib/macOS/include/BCONNetwork"
