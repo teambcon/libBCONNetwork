@@ -9,7 +9,7 @@ QT += network
 
 TARGET = BCONNetwork
 TEMPLATE = lib
-CONFIG += staticlib
+#CONFIG += staticlib
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -36,6 +36,8 @@ mac: LIBS += -framework PCSC
 
 unix:!macx: CONFIG += link_pkgconfig
 unix:!macx: PKGCONFIG += libpcsclite
+
+macx: QMAKE_LFLAGS_SONAME = -Wl,-install_name,@rpath/
 
 macx {
     target.path = "$$_PRO_FILE_PWD_/lib/macOS/"
