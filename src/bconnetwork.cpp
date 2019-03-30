@@ -83,9 +83,9 @@ void BCONNetwork::handleJSONPayload( const QByteArray & Message )
 /*--------------------------------------------------------------------------------------------------------------------*/
 
 QList<DataPoint> BCONNetwork::JSONUnpackObject( const QJsonObject & ParentObject,
-                                                   const QJsonObject::const_iterator & ParentIterator,
-                                                   const QString & sParentKey,
-                                                   const QDateTime & Timestamp )
+                                                const QJsonObject::const_iterator & ParentIterator,
+                                                const QString & sParentKey,
+                                                const QDateTime & Timestamp )
 {
     QJsonObject::const_iterator Iterator;
     QList<DataPoint> Points;
@@ -113,8 +113,8 @@ QList<DataPoint> BCONNetwork::JSONUnpackObject( const QJsonObject & ParentObject
 /*--------------------------------------------------------------------------------------------------------------------*/
 
 QList<DataPoint> BCONNetwork::JSONValueToDataPoint( const QJsonValue & Value,
-                                                       const QString & sKey,
-                                                       const QDateTime & Timestamp )
+                                                    const QString & sKey,
+                                                    const QDateTime & Timestamp )
 {
     DataPoint Data;
     QList<DataPoint> Points;
@@ -176,8 +176,8 @@ QList<DataPoint> BCONNetwork::JSONValueToDataPoint( const QJsonValue & Value,
 /*--------------------------------------------------------------------------------------------------------------------*/
 
 void BCONNetwork::sendRequest( const QUrl & Destination,
-                                  const QNetworkAccessManager::Operation & eRequestType,
-                                  const QJsonObject & Body )
+                               const QNetworkAccessManager::Operation & eRequestType,
+                               const QJsonObject & Body )
 {
     QByteArray Data;
     QNetworkRequest Request;
