@@ -14,7 +14,7 @@ Library containing common networking functionality for the BCON RFID Arcade proj
 
 ### lib
 
-- Output directory for the final build products. Subdirectories will be one of _Linux_, _macOS_, and/or _Windows_ depending on the executed build script. Build products are _not_ checked into the repository.
+- Output directory for the final build products. Subdirectories will be one of _Linux_ or _macOS_, depending on the executed build script. Build products are _not_ checked into the repository.
 
 ### src
 
@@ -23,7 +23,20 @@ Library containing common networking functionality for the BCON RFID Arcade proj
 ## Prerequisites
 
 - [Qt Open Source](https://www.qt.io/download) (download the installer for your platform)
+
 	- Version 5.12.0 or later preferred
+
+- NFC reader driver package (from the [manufacturer's website](https://www.acs.com.hk/en/products/3/acr122u-usb-nfc-reader/))
+
+### Linux
+
+- `libpcsclite-dev`
+
+	- **NOTE:** If build errors complain about undefined references in this package's installed header files, the files may need to manually patched to have `PCSC/` prepended to the relevant `#include` statements such that they properly find one another.
+
+### macOS
+
+- `pcsc-lite`, obtainable with [Homebrew](https://formulae.brew.sh/formula/pcsc-lite).
 
 ## Backend API
 
@@ -62,11 +75,11 @@ Each class who wishes to subscribe to data points must subclass `DataSubscriber`
 
 ## NFCManager
 
-The NFC reader/writer supported by the library is the [ACS ACR122U](https://www.acs.com.hk/en/products/3/acr122u-usb-nfc-reader/). The `NFCManager` class, if elected to be used in the construction of the library, handles all interfacing with this device. The initialization function `NFCManagerInit()` 
+The NFC reader/writer supported by the library is the [ACS ACR122U](https://www.acs.com.hk/en/products/3/acr122u-usb-nfc-reader/). The `NFCManager` class, if elected to be used in the construction of the library, handles all interfacing with this device. The initialization function `NFCManagerInit()` is automatically called if the `NFCManager` class was elected to be used via the boolean value in the library's constructor.
 
 ## Building & Linking
 
-From the _build_ directory, execute the build script for your respective platform. Ensure that Qt is present in your path before proceeding (i.e. `which qmake` should return something like `~/Qt/5.12.0/clang_64/bin` on macOS). Upon success, the library will be created in `libs/<platform>`.
+From the _build_ directory, execute the build script for your respective platform. Ensure that Qt is present in your path before proceeding (i.e. `which qmake` should return something like `~/Qt/5.12.0/clang_64/bin` on macOS). Upon success, the dynamic library will be created in `libs/<platform>`.
 
 Integrating the library into another Qt project can be taken of in Qt Creator:
 
