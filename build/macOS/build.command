@@ -23,6 +23,7 @@ fi
 echo "Cleaning previous build artifacts..."
 rm -rf ../../lib/macOS &> /dev/null
 rm -f ../../.qmake.stash &> /dev/null
+rm -rf ../../libBCONNetwork*.dylib &> /dev/null
 
 # Build and install the library.
 pushd . &> /dev/null
@@ -39,6 +40,6 @@ fi
 echo "Cleaning up..."
 make clean
 rm -f .qmake.stash &> /dev/null
-rm -f libBCONNetwork.a &> /dev/null
+rm -rf libBCONNetwork*.dylib &> /dev/null
 rm -f Makefile &> /dev/null
 popd &> /dev/null
